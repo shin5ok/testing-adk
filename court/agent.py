@@ -44,4 +44,10 @@ Court = SequentialAgent(
     sub_agents=[debate_loop, judge]
 )
 
-root_agent = Court
+root_agent = LlmAgent(
+    name="RootAgent",
+    model=MODEL_NAME,
+    description="裁判エージェントのルートエージェントです。",
+    instruction="あなたは裁判エージェントのルートエージェントです。",
+    sub_agents=[Court]
+)
